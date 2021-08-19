@@ -39,19 +39,19 @@ function Layout() {
     }
   }
 
-    function removeCard(cardId) {
-      async function cardRemoval() {
-        const response = await deleteCard(cardId);
-        if (response) {
-          console.log("response: ", response);
-        }
-      }
-      if (window.confirm("Are you sure you want to delete this card?")) {
-        cardRemoval();
-        history.push("/");
-        history.go(0);
+  function removeCard(cardId) {
+    async function cardRemoval() {
+      const response = await deleteCard(cardId);
+      if (response) {
+        console.log("response: ", response);
       }
     }
+    if (window.confirm("Are you sure you want to delete this card?")) {
+      cardRemoval();
+      history.push("/");
+      history.go(0);
+    }
+  }
 
   return (
     <>
@@ -64,20 +64,21 @@ function Layout() {
           <Route path="/decks/new">
             <CreateDeck />
           </Route>
-          <Route path="/decks/:deckId/cards/:cardId/edit">
-            <EditCard />
+          <Route path="/decks/:deckId/study">
+            <Study />
+          </Route>
+
+          <Route path="/decks/:deckId/edit">
+            <EditDeck />
           </Route>
           <Route path="/decks/:deckId/cards/new">
             <AddCard />
           </Route>
-          <Route path="/decks/:deckId/edit">
-            <EditDeck />
-          </Route>
-          <Route path="/decks/:deckId/study">
-            <Study />
+          <Route path="/decks/:deckId/cards/:cardId/edit">
+            <EditCard />
           </Route>
           <Route path="/decks/:deckId">
-            <Deck removeDeck={removeDeck} removeCard={removeCard}/>
+            <Deck removeDeck={removeDeck} removeCard={removeCard} />
           </Route>
           <Route>
             <NotFound />

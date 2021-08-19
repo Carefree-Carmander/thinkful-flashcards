@@ -5,39 +5,6 @@ import { listDecks } from "../utils/api";
 
 // import CreateDeck from "./CreateDeck";
 
-/*
-The Home screen has the following features:
-
--The path to this screen should be /.
--A "Create Deck" button is shown and clicking it brings the user to the Create Deck screen.
--Existing decks are each shown with the deck name, the number of cards, and a “Study,” “View,” and “Delete” button.
--Clicking the “Study” button brings the user to the Study screen.
--Clicking the “Edit” button brings the user to the Edit Deck screen.
--Clicking the “Delete” button shows a warning message before deleting the deck.
-
-example deck object:
-{
-  "name": "React Router",
-  "description": "React Router is a collection of navigational components that compose declaratively with your application.",
-  "id": 2,
-  "cards": [
-    {
-      "front": "What path will match the follow Route?\n<Route>\n  <NotFound />\n</Route>",
-      "back": "All paths. A route with no path matches all URL's",
-      "deckId": 2,
-      "id": 4
-    },
-    {
-      "front": "What does <Switch> do?",
-      "back": "Renders the first matching child <Route> ",
-      "deckId": 2,
-      "id": 5
-    }
-  ]
-}
-
-*/
-
 export const Home = function ({ removeDeck }) {
   const [decks, setDecks] = useState([]);
 

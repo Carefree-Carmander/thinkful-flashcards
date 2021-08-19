@@ -25,9 +25,11 @@ export const EditDeck = function () {
     async function getDeck() {
       const response = await readDeck(deckId);
       setDeck(response);
+      setName(response.name);
+      setDescription(response.description);
     }
     getDeck();
-  }, [deckId]);
+  }, []);
 
   if (!deck.id) return null;
 
@@ -55,13 +57,18 @@ export const EditDeck = function () {
           Home
         </a>
         /
-        <a
+        <h5
           className="navbar-brand text-primary"
-          style={{ marginLeft: "15px" }}
+          style={{
+            marginLeft: "15px",
+            padding: "0px",
+            marginTop: "0px",
+            marginBottom: "0px",
+          }}
           href={`/decks/${deckId}`}
         >
           {deck.name}
-        </a>
+        </h5>
         /
         <a
           className="navbar-brand text-secondary"
@@ -120,7 +127,7 @@ export const EditDeck = function () {
                   type="text"
                   className="form-control"
                   id="newDeckName"
-                  // placeholder={`${deck.name}`}
+                  placeholder={name}
                   onChange={handleNameInput}
                   defaultValue={name}
                   required
@@ -135,6 +142,7 @@ export const EditDeck = function () {
                   // placeholder={`${deck.description}`}
                   rows="3"
                   style={{ display: "block", width: "100%" }}
+                  placeholder={description}
                   defaultValue={description}
                   required
                   onChange={handleDescriptionInput}

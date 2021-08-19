@@ -29,7 +29,7 @@ export const AddCard = function () {
       setDeck(response);
     }
     getDeck();
-  }, [deckId]);
+  }, []);
 
   if (!deck.name) return null;
 
@@ -103,7 +103,7 @@ export const AddCard = function () {
             {/* Name Inputs */}
             <div className="form-group">
               <label htmlFor="newCardFront">Front</label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 id="newCardFront"
@@ -111,7 +111,7 @@ export const AddCard = function () {
                 onChange={handleFrontInput}
                 defaultValue={front}
                 required
-              />
+              ></textarea>
             </div>
             {/* Description Inputs */}
             <div className="form-group">

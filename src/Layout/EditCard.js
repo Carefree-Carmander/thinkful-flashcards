@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { HomeIcon } from "./Icons";
 import { updateCard } from "../utils/api";
-import { readDeck } from "../utils/api";
+import { readDeck, readCard } from "../utils/api";
 
 /*
 
@@ -26,8 +26,14 @@ export const EditCard = function () {
       const response = await readDeck(deckId);
       setDeck(response);
     }
+    async function getCard() {
+      const response = await readCard(cardId);
+      setFront(response.front);
+      setBack(response.back);
+    }
     getDeck();
-  }, [deckId]);
+    getCard();
+  }, []);
 
   if (!deck) return null;
 
@@ -44,7 +50,12 @@ export const EditCard = function () {
           style={{ marginLeft: "15px" }}
           href={`/decks/${deckId}`}
         >
+          <h5
+            className="text-secondary"
+            style={{ padding: "0px", margin: "0px" }}
+          >
           {deck.name}
+          </h5>
         </a>
         /
         <a
@@ -52,7 +63,10 @@ export const EditCard = function () {
           style={{ marginLeft: "15px" }}
           href="#"
         >
-          {`Edit Card ${cardId}`}
+          <h5
+            className="text-primary"
+            style={{ padding: "0px", margin: "0px" }}
+          >{`Edit Card ${cardId}`}</h5>
         </a>
       </nav>
     );
@@ -108,7 +122,7 @@ export const EditCard = function () {
                 type="text"
                 className="form-control"
                 id="cardFront"
-                placeholder="Card Front"
+                placeholder={front}
                 onChange={handleFrontInput}
                 defaultValue={front}
                 required
@@ -120,7 +134,7 @@ export const EditCard = function () {
               <textarea
                 className="cardBack"
                 id="cardBack"
-                placeholder="Card Back"
+                placeholder={back}
                 rows="3"
                 style={{ display: "block", width: "100%" }}
                 defaultValue={back}

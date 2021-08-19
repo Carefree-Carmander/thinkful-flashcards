@@ -75,11 +75,8 @@ export const Study = function () {
     if (cards.length < 3) {
       return (
         <div>
-          <h1>Not enough Study Cards</h1>
-          <p>
-            You need at least 3 cards to study. There are {cards.length} cards
-            in this deck.
-          </p>
+          <h1>Not enough cards.</h1>
+          <p>There are {cards.length} cards in this deck.</p>
           <Link to={`/decks/${deck.id}/cards/new`}>
             <button type="button" className="btn btn-primary mr-2">
               <PlusIcon />
@@ -182,14 +179,8 @@ export const Study = function () {
   return (
     <div className="row">
       <Navbar />
-      <Switch>
-        <Route>
-          <NotEnough />
-        </Route>
-        <Route>
-          <ShowCards />
-        </Route>
-      </Switch>
+
+      {cards.length >= 3 ? <ShowCards /> : <NotEnough />}
     </div>
   );
 };

@@ -40,7 +40,7 @@ export const Deck = function ({ removeDeck, removeCard }) {
       setDeck(response);
     }
     getDeck();
-  }, [deckId]);
+  }, []);
 
   if (!deck.id) return null;
 
