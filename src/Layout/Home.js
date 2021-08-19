@@ -92,8 +92,5 @@ export const Home = function ({ removeDeck }) {
   );
 };
 
-<Switch>
-  <Route>{/* <CreateDeck path="/decks/new"/> */}</Route>
-</Switch>;
 
 export default Home;
